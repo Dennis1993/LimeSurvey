@@ -28,4 +28,28 @@ class QuickTranslationServiceTest extends TestBaseClass
         $this->assertNotEmpty($ts);
         $this->assertEquals($ts[0]->surveyls_title, 'translation');
     }
+
+    public function testUpdateTranslationUnknownField()
+    {
+        $qt = new QuickTranslation(self::$testSurvey);
+        $ts = $qt->updateTranslations('wrongField', 'en', 'newstring');
+        $this->assertNull($ts);
+    }
+
+    public function testUpdateTranslationEnglishTitle()
+    {
+        $qt = new QuickTranslation(self::$testSurvey);
+        $ts = $qt->updateTranslations('title', 'en', 'new-title');
+        $this->assertNotNull($ts);
+        $this->assertEquals(1, $ts);
+    }
+
+    /* --> something wrong with imported test-survey and the groupid, that should be 2
+    public function testUpdateTranslationArabicGroup()
+    {
+        $qt = new QuickTranslation(self::$testSurvey);
+        $ts = $qt->updateTranslations('group', 'de', 'newGroupTitle', 2);
+        $this->assertNotNull($ts);
+        $this->assertEquals(1, $ts);
+    }*/
 }
