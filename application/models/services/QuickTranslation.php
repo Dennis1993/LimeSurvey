@@ -445,11 +445,11 @@ class QuickTranslation
                 return $updateLanguageSetting(array('email_admin_responses_subj' => $new));
             case 'emaildetailedadminnotificationbody':
                 return $updateLanguageSetting(array('email_admin_responses' => $new));
-            case 'group': //todo: here id1 = groupid
+            case 'group':
                 return QuestionGroupL10n::model()->updateAll(array('group_name' => mb_substr($new, 0, 100)), 'gid = :gid and language = :language', array(':gid' => $qidOrgid, ':language' => $tolang));
             case 'group_desc':
                 return QuestionGroupL10n::model()->updateAll(array('description' => $new), 'gid = :gid and language = :language', array(':gid' => $qidOrgid, ':language' => $tolang));
-            case 'question': //todo: here id1 = questionid
+            case 'question':
                 return QuestionL10n::model()->updateAll(array('question' => $new), 'qid = :qid and language = :language', array(':qid' => $qidOrgid, ':language' => $tolang));
             case 'question_help':
                 return QuestionL10n::model()->updateAll(array('help' => $new), 'qid = :qid and language = :language', array(':qid' => $qidOrgid, ':language' => $tolang));
